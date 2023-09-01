@@ -27,6 +27,8 @@ include_directories(${tfspp_SOURCE_DIR}/src)
 #include <iostream>
 #include "tfs_dataframe.h"
 
+using TfsDataFrame = tfs::dataframe<double>;
+
 int main(int argc, char** argc) {
     TfsDataFrame twiss{};
 
