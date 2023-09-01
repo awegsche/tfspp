@@ -103,7 +103,6 @@ namespace tfs
          * @return data_vector<real>& 
          */
         data_vector<real>& add_column(const std::string& name, DataType t) {
-            std::cout << "new column " << name << "\n";
             column_headers[name] = columns.size();
             columns.emplace_back(t, name);
 
@@ -248,8 +247,6 @@ namespace tfs
     template<typename real>
     void dataframe<real>::to_file(const std::string& filename)
     {
-        std::cout << "writing to file\n";
-        std::cout << "this->size() = " << size() << "\n";
         std::ofstream file(filename);
 
         if (!file.is_open())
@@ -307,7 +304,6 @@ namespace tfs
             std::ostringstream ss;
             std::copy(tokens.begin() + 3, tokens.end(),
                       std::ostream_iterator<std::string>(ss, " "));
-            std::cout << ss.str() << std::endl;
             properties.insert(std::make_pair(tokens[1], ss.str()));
         }
     }
@@ -340,7 +336,6 @@ template<typename real>
         std::vector<std::string> tokens;
         tokenize(line, tokens);
 
-        //std::cout << tokens.size() << " tokens: {" << tokens[0] << ", " << tokens[1] << ", " <<tokens[2] << ", ...}\n";
 
         for (int i = 0; i < tokens.size(); i++)
         {

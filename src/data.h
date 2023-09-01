@@ -123,7 +123,6 @@ namespace tfs
          */
         data_vector(data_vector&& other) :type(std::move(other.type)), name(std::move(other.name)) {
 
-            std::cout << "moving datavector" << name << "'\n";
             switch(other.type) {
             case DataType::B:
                 payload.bool_vector = std::move(other.payload.bool_vector);
@@ -147,7 +146,6 @@ namespace tfs
          */
         data_vector(const data_vector& other) :type(other.type), name(other.name) {
 
-            //std::cout << "WARNING, copy of data_vector '" << name << "'\n";
             switch(other.type) {
             case DataType::B:
                 payload.bool_vector = other.payload.bool_vector;
