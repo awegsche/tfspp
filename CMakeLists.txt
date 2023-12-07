@@ -38,7 +38,11 @@ target_link_libraries(
     GTest::gtest_main
     )
 
-target_compile_options(tfs_cpp PRIVATE -Wall -Wextra -Wpedantic -Werror)
+if (MSVC)
+    target_compile_options(tfs_cpp PRIVATE /W4 /WX)
+else()
+    target_compile_options(tfs_cpp PRIVATE -Wall -Wextra -Wpedantic -Werror)
+endif()
 
 include(GoogleTest)
 gtest_discover_tests(tests)
